@@ -12,7 +12,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="Scripts.js"></script>
 </head>
-<body onLoad="getData()">
+<body>
 	<form id="scouting-form" name="scouting-form" action="Scouting Test 1.html" method="POST">
 		
 <!--MATCH SETUP-->
@@ -160,6 +160,7 @@
 			url = 'https://script.google.com/macros/s/AKfycbxslJcj5Y5mIwzyDGdnYL5MGcnHQhdUz1FpbsDYuGgh5ivugvM/exec' //you'll have to change this for hartford, onwards
 		
         var teams = new XMLHttpRequest();
+	getData();
     	var match = document.getElementById("Match").value;
     	teams.open("GET", "https://www.thebluealliance.com/api/v3/match/" + event + "_qm" + match, true);
         teams.setRequestHeader("X-TBA-Auth-Key", key);
