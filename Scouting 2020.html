@@ -1,0 +1,266 @@
+<html>
+<head>
+	<title>&#220;B Scout 2020</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='AutoStyles.css' rel='stylesheet'>
+	<link href='CounterStyles.css' rel='stylesheet'>
+	<link href='EndgameMiscStyles.css' rel='stylesheet'>
+	<link href='MatchSetupStyles.css' rel='stylesheet'>
+	<link href='PageSetupStyles.css' rel='stylesheet'>
+	<link href='TeleOpStyles.css' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Candara' rel='stylesheet'> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="Scripts.js"></script>
+</head>
+<body onLoad="getData()">
+	<form id="scouting-form" name="scouting-form" action="Scouting Test 1.html" method="POST">
+		
+<!--MATCH SETUP-->
+		<input type="text" name="Scouter" id="Scouter" placeholder="Name"/>
+		<input type="text" name="Position" id="fieldPosition" style="display: none;"/>
+		<select name="ScouterPosition" class="preset" id="scouterPosition" onChange="scoutingPosition()">
+			<option value="R1" selected>Red 1</option>
+			<option value="R2">Red 2</option>
+			<option value="R3">Red 3</option>
+			<option value="B1">Blue 1</option>
+			<option value="B2">Blue 2</option>
+			<option value="B3">Blue 3</option>
+		</select>
+		<input type="text" name="Team" class="preset" id="Team" placeholder="Team" list="teams"><datalist id="teams">
+			<option>176</option><!--please find a way to yoink these, it would be so much nicer-looking-->
+			<option>177</option>
+			<option>178</option>
+			<option>228</option>
+			<option>230</option>
+			<option>236</option>
+			<option>237</option>
+			<option>558</option>
+			<option>716</option>
+			<option>839</option>
+			<option>999</option>
+			<option>1071</option>
+			<option>1099</option>
+			<option>2836</option>
+			<option>3104</option>
+			<option>3146</option>
+			<option>3525</option>
+			<option>3566</option>
+			<option>3654</option>
+			<option>4055</option>
+			<option>4420</option>
+			<option>4557</option>
+			<option>4572</option>
+			<option>4628</option>
+			<option>5142</option>
+			<option>5856</option>
+			<option>6333</option>
+			<option>6346</option>
+			<option>6811</option>
+			<option>7407</option>
+			<option>7694</option>
+			<option>7760</option>
+			<option>7869</option>
+			<option>8085</option>
+			<option>8167</option>
+		</datalist></input>
+		<input type="number" name="Match" id="Match" placeholder="Match" size="5" value="1" class="preset"/>
+		<p style="display: inline-block;">Manual&nbsp;</p>
+		<label class="switch"><input type="checkbox" id="manual"> <span class="slider round" onClick="manualInput()"></span></label> 
+		<br>
+		
+<!--AUTO-->
+		<h1 style="display: inline; margin-right: 0;">Auto</h1>
+		<select name="Status" id="vroom">
+			<option value="functioning">Functional</option>
+			<option value="not functioning">Dead</option>
+			<option value="bad wires">Stuttering</option>
+			<option value="weak wires">No COMS</option>
+			<option values="no robot">Not Present</option>
+		</select>
+		<label>Exit Sector&nbsp;</label><label class="switch"><input type="checkbox" name="Exit Sector"><span class="slider round"></span></label><br>
+		
+		<!--Auto Goal Counters-->
+		<div class="goals">
+			<div class="button-group-horizontal">
+				<button type="button" class="auto lowGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+				<button type="button" class="auto lowGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="LowGoals_Auto" class="counter" id="LowGoals_Auto" placeholder="Auto Low Goals" value="0"/>
+				<p class="counterLabel">Lower</p>
+				<p class="counterDisplay" id="AutoLowCounter">0</p>
+			</div>
+			<div class="button-group-horizontal">
+				<button type="button" class="auto outGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+				<button type="button" class="auto outGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="OutGoals_Auto" class="counter" id="OutGoals_Auto" placeholder="Auto Outer Goals" value="0"/>
+				<p class="counterLabel">Outer</p>
+				<p class="counterDisplay" id="AutoOutCounter">0</p>
+			</div>
+			<div class="button-group-horizontal">
+				<button type="button" class="auto inGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+				<button type="button" class="auto inGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="InGoals_Auto" class="counter" id="InGoals_Auto" placeholder="Auto Inner Goals" value="0"/>
+				<p class="counterLabel">Inner</p>
+				<p class="counterDisplay" id="AutoInCounter">0</p>
+			</div>
+			<br>
+			<br>
+		</div>
+		<br>
+		<br style="line-height: 0.5em;">
+		
+<!--TELEOP-->
+		<h1 style="display: inline; float: left; margin-right: 0.5em;">TeleOp</h1>
+		<div id="cpButtonGroup">
+			<button type="button" id="rotate" onClick="rotateOn()"><strong>Rotation<br>Control</strong></button>
+			<button type="button" id="position" onClick="positionOn()"><strong>Position<br>Control</strong></button>
+		</div>
+		<br>
+		<br>
+		<!--actual control panel inputs *shhhhhhhhh*-->
+		<div style="display: none;">
+			<input type="checkbox" name="RotationControl" id="CRotate"/><label>Rotation Control</label><br>
+			<input type="checkbox" name="PositionControl" id="CPosition"/><label>Position Control</label><br>
+		</div>
+		
+		<input type="number" name="LowGoals_TeleOp" placeholder="TeleOp Low Goals"/>
+		<input type="number" name="OutGoals_TeleOp" placeholder="TeleOp Outer Goals"/>
+		<input type="number" name="InGoals_TeleOp" placeholder="TeleOp Inner Goals"/>
+		<div>
+		<label>Defended&nbsp;</label><label class="switch"><input type="checkbox" name="Defended"><span class="slider round"></span></label><br>
+		<label>Defender?&nbsp;</label><label class="switch"><input type="checkbox" name="DefenseBot"><span class="slider round"></span></label><br>
+		</div>
+		<input type="number" name="ShotsBlocked" placeholder="Goals Blocked"/>
+		
+<!--ENDGAME-->
+		<select name="EndgameStatus" id="endgame">
+			<option disabled selected>Endgame</option>
+			<option value="Not Parked">Not Parked</option>
+			<option value="Parked">Parked</option>
+			<option value="Hanging">Hanging</option>
+			<option value="Level">Level & Hanging</option>
+		</select><br>
+		<input type="number" name="Fouls" placeholder="Fouls"/>
+		<input type="number" name="TechFouls" placeholder="Tech Fouls"/>
+		<button type="button" id="cards" onclick="cardChange()">No Card</button>
+		<select name="Card" id="Card">
+			<option value="No Card" id="nocard">No Card</option>
+			<option value="Yellow">Yellow Card</option>
+			<option value="Red">Red Card</option>
+		</select><br>
+		<textarea name="Notes" rows="4" placeholder="Notes..."></textarea><br>
+		
+		<button type="submit" id="submit-form" class="submit-button">Submit</button>
+	</form>
+	
+<!--THIS SUBMITS THE SCOUTING FORM-->
+	<script>
+	var key = 'glP4efMbZWacBqtcpUM555uliSW3Y3db8nqy7xYvCCZF4u2D91XQu8Uj1O33wWHd'; //in the future please get your own TBA Read Key
+    var event = '2020week0'; //you'll have to change this for hartford, onwards
+    var nummatches;
+	
+	$(document).ready(function() {
+		var $form = $('form#scouting-form'),
+			url = 'https://script.google.com/macros/s/AKfycbxslJcj5Y5mIwzyDGdnYL5MGcnHQhdUz1FpbsDYuGgh5ivugvM/exec' //you'll have to change this for hartford, onwards
+		
+        var teams = new XMLHttpRequest();
+    	var match = document.getElementById("Match").value;
+    	teams.open("GET", "https://www.thebluealliance.com/api/v3/match/" + event + "_qm" + match, true);
+        teams.setRequestHeader("X-TBA-Auth-Key", key);
+        teams.onreadystatechange = function(){
+			if(this.readyState === 4 && this.status === 200){
+  				var json = JSON.parse(this.responseText);
+  				var options;
+  				var matchTeams = new Array(json.alliances.red.team_keys[0],json.alliances.red.team_keys[1],json.alliances.red.team_keys[2],json.alliances.blue.team_keys[0],json.alliances.blue.team_keys[1],json.alliances.blue.team_keys[2]);
+ 				var teamPick = document.getElementById("Team");
+ 				switch (document.getElementById("scouterPosition").value) {
+ 					case "R1":
+ 						teamPick.value = removeFRC(matchTeams[0]);
+ 					break;
+ 					case "R2":
+ 						teamPick.value = removeFRC(matchTeams[1]);
+ 					break;
+ 					case "R3":
+ 						teamPick.value = removeFRC(matchTeams[2]);
+ 					break;
+ 					case "B1":
+ 						teamPick.value = removeFRC(matchTeams[3]);
+ 					break;
+ 					case "B2":
+ 						teamPick.value = removeFRC(matchTeams[4]);
+ 					break;
+ 					case "B3":
+ 						teamPick.value = removeFRC(matchTeams[5]);
+ 					break;
+ 					default: teamPick.value = "heck";
+ 				}
+ 			}
+		}
+        teams.send();
+   	 	
+		getNumMatches();
+		console.log(nummatches);
+		
+		$('#submit-form').on('click', function(e) {
+			e.preventDefault();
+			var jqxhr = $.ajax({
+				url: url,
+				method: "GET",
+				dataType: "json",
+				data: $form.serialize(),
+				success: function() {
+					alert("Submitted");
+					var match = document.getElementById("Match");
+					var matchnum = match.value;
+					var scouter = document.getElementById("Scouter");
+					var scoutername = scouter.value;
+					var scoutingPosition = document.getElementById("scouterPosition");
+					var position = scoutingPosition.value;
+					var positionColor = scoutingPosition.style.backgroundColor;
+					var form = document.getElementById("scouting-form");
+					var manual = document.getElementById("manual").checked;
+					form.reset();
+					resetEverything();
+					document.getElementById("manual").checked = manual;
+					var card = document.getElementById("cards");
+					card.innerHTML = "No Card";
+					if (matchnum < nummatches) {
+						matchnum++;
+						match.value = matchnum;
+						scouter.value = scoutername;
+						scoutingPosition.value = position;
+						scoutingPosition.style.backgroundColor = positionColor;
+						getTeam();
+					}
+					else {
+						alert("You're done!");
+						window.close();
+					}
+				}
+			});
+		});
+	});
+	
+	function removeFRC(team) {
+   	 		return team.substring(3,team.length);
+   	}
+	</script>
+	
+<!--this part is to mark you as done scouting when you close the page-->
+	<form id="logout">
+		<input type="text" name="Name" id="Name" style="display: none;"/>
+		<input type="text" name="Position" id="Position" style="display: none;"/>
+		<input type="text" name="On/Off" id="on-off" value="Off" style="display: none;"/>
+	</form>
+	<script>
+	$(window).on("beforeunload", function(e) {
+   		var  $form = $('form#logout'),
+   			url = "https://script.google.com/macros/s/AKfycbx_crdTsOe1Cxlg3G9xH4Re0KGqzvY2AczRBDTOVQrj_k6giD5r/exec" //you'll have to change this for hartford, onwards
+   			
+   		$.ajax({
+     		type: 'GET',
+			dataType: 'json',
+			data: $form.serialize(),
+     		async: false,
+     		url: url
+   		});
+	});
+	</script>
+</body>
+</html>
