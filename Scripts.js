@@ -180,6 +180,7 @@ function getData() {
 		break;
 		default: alert("heck");	
 	}
+	alert("You're scouting "+position+".");
 	scoutingPosition();
 	console.log(document.getElementById("Name").value+" "+document.getElementById("Position").value+" "+document.getElementById("on-off").value);
 }
