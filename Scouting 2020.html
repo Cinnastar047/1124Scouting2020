@@ -251,7 +251,16 @@
 	</form>
 	<script>
 	$(window).on("beforeunload", function(e) {
-   		var  $form = $('form#logout'),
+   		logOut();
+	});
+		
+	document.addEventListener("visibilitychange", function() {
+		if(document.visibilityState == "hidden") logOut();
+		else if(document.visibilityState == "visible") window.open("index.html", "_self");
+	}, false);
+		
+	function logOut() {
+		var  $form = $('form#logout'),
    			url = "https://script.google.com/macros/s/AKfycbx_crdTsOe1Cxlg3G9xH4Re0KGqzvY2AczRBDTOVQrj_k6giD5r/exec" //you'll have to change this for hartford, onwards
    			
    		$.ajax({
@@ -261,7 +270,7 @@
      		async: false,
      		url: url
    		});
-	});
+	}
 	</script>
 </body>
 </html>
