@@ -61,6 +61,42 @@ function countUp(button_class) {
 			ingoalAuto.value++;
 			ingoalAutoDisplay.innerHTML++;
 		break;
+		case "teleOp lowGoal right-button":
+			var lowgoalTeleop = document.getElementById("LowGoals_TeleOp");
+			var lowgoalTeleopDisplay = document.getElementById("TeleopLowCounter");
+			lowgoalTeleop.value++;
+			lowgoalTeleopDisplay.innerHTML++;
+		break;
+		case "teleOp outGoal right-button":
+			var outgoalTeleop = document.getElementById("OutGoals_TeleOp");
+			var outgoalTeleopDisplay = document.getElementById("TeleopOutCounter");
+			outgoalTeleop.value++;
+			outgoalTeleopDisplay.innerHTML++;
+		break;
+		case "teleOp inGoal right-button":
+			var ingoalTeleop = document.getElementById("InGoals_TeleOp");
+			var ingoalTeleopDisplay = document.getElementById("TeleopInCounter");
+			ingoalTeleop.value++;
+			ingoalTeleopDisplay.innerHTML++;
+		break;
+		case "foul right-button":
+			var foul = document.getElementById("fouls");
+			var foulDisplay = document.getElementById("FoulCounter");
+			foul.value++;
+			foulDisplay.innerHTML++;
+		break;
+		case "techFoul right-button":
+			var techFoul = document.getElementById("techFouls");
+			var techFoulDisplay = document.getElementById("TechFoulCounter");
+			techFoul.value++;
+			techFoulDisplay.innerHTML++;
+		break;
+		case "block right-button":
+			var block = document.getElementById("ShotsBlocked");
+			var blockDisplay = document.getElementById("BlockCounter");
+			block.value++;
+			blockDisplay.innerHTML++;
+		break;
 		default: alert("oh no");
 	}
 }
@@ -91,6 +127,54 @@ function countDown(button_class) {
 			if(ingoalAuto.value > 0) {
 				ingoalAuto.value--;
 				ingoalAutoDisplay.innerHTML--;
+			}
+		break;
+		case "teleOp lowGoal left-button":
+			var lowgoalTeleop = document.getElementById("LowGoals_TeleOp");
+			var lowgoalTeleopDisplay = document.getElementById("TeleopLowCounter");
+			if(lowgoalTeleop.value > 0) {
+				lowgoalTeleop.value--;
+				lowgoalTeleopDisplay.innerHTML--;
+			}
+		break;
+		case "teleOp outGoal left-button":
+			var outgoalTeleop = document.getElementById("OutGoals_TeleOp");
+			var outgoalTeleopDisplay = document.getElementById("TeleopOutCounter");
+			if(outgoalTeleop.value > 0) {
+				outgoalTeleop.value--;
+				outgoalTeleopDisplay.innerHTML--;
+			}
+		break;
+		case "teleOp inGoal left-button":
+			var ingoalTeleop = document.getElementById("InGoals_TeleOp");
+			var ingoalTeleopDisplay = document.getElementById("TeleopInCounter");
+			if(ingoalTeleop.value > 0) {
+				ingoalTeleop.value--;
+				ingoalTeleopDisplay.innerHTML--;
+			}
+		break;
+		case "foul left-button":
+			var foul = document.getElementById("fouls");
+			var foulDisplay = document.getElementById("FoulCounter");
+			if(foul.value > 0) {
+				foul.value--;
+				foulDisplay.innerHTML--;
+			}
+		break;
+		case "techFoul left-button":
+			var techFoul = document.getElementById("techFouls");
+			var techFoulDisplay = document.getElementById("TechFoulCounter");
+			if(techFoul.value > 0) {
+				techFoul.value--;
+				techFoulDisplay.innerHTML--;
+			}
+		break;
+		case "block left-button":
+			var block = document.getElementById("ShotsBlocked");
+			var blockDisplay = document.getElementById("BlockCounter");
+			if(block.value > 0) {
+				block.value--;
+				blockDisplay.innerHTML--;
 			}
 		break;
 		default: alert("oh no");
@@ -128,10 +212,42 @@ function positionOn() {
 		checkbox.checked = true;
 	}
 }
+
+function toggleDefender() {
+	var button = document.getElementById("defended");
+	var checkbox = document.getElementById("CDefended");
+	if (checkbox.checked) {
+		button.style.backgroundColor = "#eee";
+		button.style.color = "black";
+		checkbox.checked = false;
+	}
+	else {
+		button.style.backgroundColor = "#2bc23f";
+		button.style.color = "white";
+		checkbox.checked = true;
+	}
+}
+
+function toggleDefense() {
+	var button = document.getElementById("playDefense");
+	var checkbox = document.getElementById("CPlayDefense");
+	if (checkbox.checked) {
+		button.style.backgroundColor = "#eee";
+		button.style.color = "black";
+		checkbox.checked = false;
+	}
+	else {
+		button.style.backgroundColor = "#2bc23f";
+		button.style.color = "white";
+		checkbox.checked = true;
+	}
+}
 		
 function resetEverything() {
 	var rcButton = document.getElementById("rotate");
 	var pcButton = document.getElementById("position");
+	var ddButton = document.getElementById("defended");
+	var pdButton = document.getElementById("playDefense");
 	var sPosition = document.getElementById("scouterPosition").value;
 	var card = document.getElementById("cards");
 	if (sPosition=="R1" || sPosition=="R2" || sPosition=="R3") { document.getElementById("scouterPosition").style.backgroundColor = "#B00"; }
@@ -140,10 +256,20 @@ function resetEverything() {
 	rcButton.style.color = "black";
 	pcButton.style.backgroundColor = "#eee";
 	pcButton.style.color = "black";
+	ddButton.style.backgroundColor = "#eee";
+	ddButton.style.color = "black";
+	pdButton.style.backgroundColor = "#eee";
+	pdButton.style.color = "black";
 	card.style.backgroundColor = "#c0c0c0";
 	document.getElementById("AutoLowCounter").innerHTML = 0;
 	document.getElementById("AutoOutCounter").innerHTML = 0;
 	document.getElementById("AutoInCounter").innerHTML = 0;
+	document.getElementById("TeleopLowCounter").innerHTML = 0;
+	document.getElementById("TeleopOutCounter").innerHTML = 0;
+	document.getElementById("TeleopInCounter").innerHTML = 0;
+	document.getElementById("FoulCounter").innerHTML = 0;
+	document.getElementById("TechFoulCounter").innerHTML = 0;
+	document.getElementById("BlockCounter").innerHTML = 0;
 }
 		
 function getData() {
@@ -180,7 +306,6 @@ function getData() {
 		break;
 		default: alert("heck");	
 	}
-	alert("You're scouting "+position+".");
 	scoutingPosition();
 	console.log(document.getElementById("Name").value+" "+document.getElementById("Position").value+" "+document.getElementById("on-off").value);
 }
