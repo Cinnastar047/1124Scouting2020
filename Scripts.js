@@ -307,7 +307,7 @@ function getData() {
 		default: alert("heck");	
 	}
 	scoutingPosition();
-	console.log(document.getElementById("Name").value+" "+document.getElementById("Position").value+" "+document.getElementById("on-off").value);
+	alert("You're scouting "+position+".");
 }
 
 function getTeam() {
