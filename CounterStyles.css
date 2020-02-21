@@ -89,11 +89,11 @@ font-size: 1em;
 background-color: #000099;
 }
 .block {
-background-color: #4fcbfe;
+background-color: #3ebaed;
 font-size: 1em;
 }
 .block:active {
-background-color: #1c98cb;
+background-color: #0b87ba;
 }
 .foul {
 background-color: #A0A0A0;
