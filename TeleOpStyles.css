@@ -2,7 +2,7 @@
 	width: fit-content;
 	display: inline;
 	position: relative;
-	margin-right: 1em;
+	margin-right: 0.5em;
 }
 #cpButtonGroup button {
 	display: inline;
@@ -24,4 +24,32 @@
 	padding: 0.5em 1em 0.5em 0.5em;
 	line-height: 1em;
 	vertical-align: text-top;
+}
+#defended {
+	display: inline;
+	/*float: right;*/
+	position: relative;
+	border-radius: 1.5em;
+	padding: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	line-height: 1em;
+	background-color: #eee;
+	vertical-align: top;
+}
+#defended:active {
+	background-color: #aba;
+}
+#playDefense {
+	display: inline;
+	float: left;
+	font-size: 1em;
+	border-radius: 0.75em;
+	padding: 0.7em 1em;
+	line-height: 1em;
+	vertical-align: text-top;
+	background-color: #eee;
+}
+.oneLine h1,div,button {
+	display: inline;
 }
