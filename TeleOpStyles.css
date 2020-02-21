@@ -35,7 +35,7 @@
 	margin-right: 0;
 	line-height: 1em;
 	background-color: #eee;
-	vertical-align: top;
+	top: -0.5em;
 }
 #defended:active {
 	background-color: #aba;
