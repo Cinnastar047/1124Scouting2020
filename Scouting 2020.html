@@ -79,7 +79,7 @@
 		</select>
 		<label>Exit Sector&nbsp;</label><label class="switch"><input type="checkbox" name="Exit Sector"><span class="slider round"></span></label><br>
 		
-		<!--Auto Goal Counters-->
+	<!--Auto Goal Counters-->
 		<div class="goals">
 			<div class="button-group-horizontal">
 				<button type="button" class="auto lowGoal left-button" onClick="countDown(this.className)">&#8678;</button>
@@ -106,44 +106,89 @@
 		<br style="line-height: 0.5em;">
 		
 <!--TELEOP-->
+		<div class="oneLine">
 		<h1 style="display: inline; float: left; margin-right: 0.5em;">TeleOp</h1>
 		<div id="cpButtonGroup">
 			<button type="button" id="rotate" onClick="rotateOn()"><strong>Rotation<br>Control</strong></button>
 			<button type="button" id="position" onClick="positionOn()"><strong>Position<br>Control</strong></button>
 		</div>
-		<br>
+		<button type="button" id="defended" onClick="toggleDefender()"><strong>Defended</strong></button>
+		<input type="checkbox" name="Defended" id="CDefended" style="display: none;"/>
+		</div>
 		<br>
 		<!--actual control panel inputs *shhhhhhhhh*-->
 		<div style="display: none;">
 			<input type="checkbox" name="RotationControl" id="CRotate"/><label>Rotation Control</label><br>
 			<input type="checkbox" name="PositionControl" id="CPosition"/><label>Position Control</label><br>
 		</div>
-		
-		<input type="number" name="LowGoals_TeleOp" placeholder="TeleOp Low Goals"/>
-		<input type="number" name="OutGoals_TeleOp" placeholder="TeleOp Outer Goals"/>
-		<input type="number" name="InGoals_TeleOp" placeholder="TeleOp Inner Goals"/>
-		<div>
-		<label>Defended&nbsp;</label><label class="switch"><input type="checkbox" name="Defended"><span class="slider round"></span></label><br>
-		<label>Defender?&nbsp;</label><label class="switch"><input type="checkbox" name="DefenseBot"><span class="slider round"></span></label><br>
+
+	<!--Teleop Goal Counters-->
+		<div class="goals">
+			<div class="button-group-horizontal">
+			<button type="button" class="teleOp lowGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="teleOp lowGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="LowGoals_TeleOp" id="LowGoals_TeleOp" class="counter" placeholder="TeleOp Low Goals" value="0"/>
+			<p class="counterLabel">Lower</p>
+			<p class="counterDisplay" id="TeleopLowCounter">0</p>
+			</div>
+			<div class="button-group-horizontal">
+			<button type="button" class="teleOp outGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="teleOp outGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="OutGoals_TeleOp" id="OutGoals_TeleOp" class="counter" placeholder="TeleOp Outer Goals" value="0"/>
+			<p class="counterLabel">Outer</p>
+			<p class="counterDisplay" id="TeleopOutCounter">0</p>
+			</div>
+			<div class="button-group-horizontal">
+			<button type="button" class="teleOp inGoal left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="teleOp inGoal right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="InGoals_TeleOp" id="InGoals_TeleOp" class="counter" placeholder="TeleOp Inner Goals" value="0"/>
+			<p class="counterLabel">Inner</p>
+			<p class="counterDisplay" id="TeleopInCounter">0</p>
+			</div>
 		</div>
-		<input type="number" name="ShotsBlocked" placeholder="Goals Blocked"/>
 		
+		<div class="goals">
+			<div>
+			<input type="checkbox" name="DefenseBot" id="CPlayDefense" style="display: none;"/><br>
+			</div>
+			<button type="button" id="playDefense" onClick="toggleDefense()"><strong>Plays<br>Defense</strong></button>
+			<div class="button-group-horizontal">
+			<button type="button" class="block left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="block right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="ShotsBlocked" id="ShotsBlocked" class="counter" placeholder="Goals Blocked" value="0"/>
+			<p class="counterLabel">Blocks</p>
+			<p class="counterDisplay" id="BlockCounter">0</p>
+			</div>
 <!--ENDGAME-->
-		<select name="EndgameStatus" id="endgame">
-			<option disabled selected>Endgame</option>
-			<option value="Not Parked">Not Parked</option>
-			<option value="Parked">Parked</option>
-			<option value="Hanging">Hanging</option>
-			<option value="Level">Level & Hanging</option>
-		</select><br>
-		<input type="number" name="Fouls" placeholder="Fouls"/>
-		<input type="number" name="TechFouls" placeholder="Tech Fouls"/>
+			<select name="EndgameStatus" id="endgame">
+				<option disabled selected>Endgame</option>
+				<option value="Not Parked">Not Parked</option>
+				<option value="Parked">Parked</option>
+				<option value="Hanging">Hanging</option>
+				<option value="Level">Level & Hanging</option>
+			</select><br>
+		</div>
+		
+
+<!--PENALTIES-->
+		<div class="goals">
+			<div class="button-group-horizontal">
+			<button type="button" class="foul left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="foul right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="Fouls" id="fouls" class="counter" placeholder="Fouls" value="0"/>
+			<p class="counterLabel">Fouls</p>
+			<p class="counterDisplay" id="FoulCounter">0</p>
+			</div>
+			<div class="button-group-horizontal">
+			<button type="button" class="techFoul left-button" onClick="countDown(this.className)">&#8678;</button>
+			<button type="button" class="techFoul right-button" onClick="countUp(this.className)">&#8680;</button><input type="number" name="TechFouls" id="techFouls" class="counter" placeholder="Tech Fouls" value="0"/>
+			<p class="counterLabel">Tech Fouls</p>
+			<p class="counterDisplay" id="TechFoulCounter">0</p>
+			</div>
+			
 		<button type="button" id="cards" onclick="cardChange()">No Card</button>
-		<select name="Card" id="Card">
-			<option value="No Card" id="nocard">No Card</option>
-			<option value="Yellow">Yellow Card</option>
-			<option value="Red">Red Card</option>
-		</select><br>
+			<select name="Card" id="Card">
+				<option value="No Card" id="nocard">No Card</option>
+				<option value="Yellow">Yellow Card</option>
+				<option value="Red">Red Card</option>
+			</select><br>
+		</div>
+<!--MISC NOTES-->
 		<textarea name="Notes" rows="4" placeholder="Notes..."></textarea><br>
 		
 		<button type="submit" id="submit-form" class="submit-button">Submit</button>
@@ -256,7 +301,7 @@
 		
 	document.addEventListener("visibilitychange", function() {
 		if(document.visibilityState == "hidden") logOut();
-		else if(document.visibilityState == "visible") window.open("index.html", "_self");
+		else if(document.visibilityState == "visible") window.open("Login.html", "_self");
 	}, false);
 		
 	function logOut() {
