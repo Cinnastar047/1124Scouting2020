@@ -88,18 +88,25 @@ font-size: 1em;
 .inGoal:active {
 background-color: #000099;
 }
-.gray1 {
+.block {
+background-color: #4fcbfe;
+font-size: 1em;
+}
+.block:active {
+background-color: #1c98cb;
+}
+.foul {
 background-color: #A0A0A0;
 font-size: 1em;
 }
-.gray1:active {
+.foul:active {
 background-color: #777;
 }
-.gray2 {
+.techFoul {
 background-color: #777;
 font-size: 1em;
 }
-.gray2:active {
+.techFoul:active {
 background-color: #444;
 }
 .button-label-vertical {
