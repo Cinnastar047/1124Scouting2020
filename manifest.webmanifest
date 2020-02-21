@@ -1,0 +1,7 @@
+{
+	"name": "UB Scout 2020",
+	"short_name": "Scout 2020",
+	"background_color": "#333",
+	"display": "standalone",
+	"theme_color": "#1d29ad"
+}
