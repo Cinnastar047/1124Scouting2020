@@ -198,6 +198,7 @@
 		
 		<button type="submit" id="submit-form" class="submit-button">Submit</button>
 	</form>
+	<div id="snackbar">Submitted</div>
 	
 <!--THIS SUBMITS THE SCOUTING FORM-->
 	<script>
@@ -256,7 +257,7 @@
 				dataType: "json",
 				data: $form.serialize(),
 				success: function() {
-					alert("Submitted");
+					submission();
 					var match = document.getElementById("Match");
 					var matchnum = match.value;
 					var scouter = document.getElementById("Scouter");
