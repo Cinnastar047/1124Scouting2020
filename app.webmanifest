@@ -19,11 +19,6 @@
 			"sizes": "72x72"
 		},
 		{
-			"src": "/Icons/ub144.png",
-			"type": "image/png",
-			"sizes": "144x144"
-		},
-		{
 			"src": "/Icons/ub192.png",
 			"type": "image/png",
 			"sizes": "192x192"
