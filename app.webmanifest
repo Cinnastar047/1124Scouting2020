@@ -9,22 +9,22 @@
 	"theme_color": "#1d29ad",
 	"icons": [
 		{
-			"src": "/Icons/ub48.png",
+			"src": "Icons/ub48.png",
 			"type": "image/png",
 			"sizes": "48x48"
 		},
 		{
-			"src": "/Icons/ub72.png",
+			"src": "Icons/ub72.png",
 			"type": "image/png",
 			"sizes": "72x72"
 		},
 		{
-			"src": "/Icons/ub192.png",
+			"src": "Icons/ub192.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "/Icons/ub256.png",
+			"src": "Icons/ub256.png",
 			"type": "image/png",
 			"sizes": "256x256"
 		}
