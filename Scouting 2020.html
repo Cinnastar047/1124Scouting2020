@@ -11,6 +11,7 @@
 	<link href='TeleOpStyles.css' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Candara' rel='stylesheet'> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="Scripts.js"></script>
 	<link rel="manifest" href="./app.webmanifest"/>
 	<link rel="icon" href="Icons/ub256.png" sizes="256x256"/>
@@ -33,41 +34,6 @@
 			<option value="B3">Blue 3</option>
 		</select>
 		<input type="text" name="Team" class="preset" id="Team" placeholder="Team" list="teams"><datalist id="teams">
-			<option>176</option><!--please find a way to yoink these, it would be so much nicer-looking-->
-			<option>177</option>
-			<option>178</option>
-			<option>228</option>
-			<option>230</option>
-			<option>236</option>
-			<option>237</option>
-			<option>558</option>
-			<option>716</option>
-			<option>839</option>
-			<option>999</option>
-			<option>1071</option>
-			<option>1099</option>
-			<option>2836</option>
-			<option>3104</option>
-			<option>3146</option>
-			<option>3525</option>
-			<option>3566</option>
-			<option>3654</option>
-			<option>4055</option>
-			<option>4420</option>
-			<option>4557</option>
-			<option>4572</option>
-			<option>4628</option>
-			<option>5142</option>
-			<option>5856</option>
-			<option>6333</option>
-			<option>6346</option>
-			<option>6811</option>
-			<option>7407</option>
-			<option>7694</option>
-			<option>7760</option>
-			<option>7869</option>
-			<option>8085</option>
-			<option>8167</option>
 		</datalist></input>
 		<input type="number" name="Match" id="Match" placeholder="Match" size="5" value="1" class="preset"/>
 		<p style="display: inline-block;">Manual&nbsp;</p>
@@ -208,6 +174,14 @@
     var nummatches;
 	
 	$(document).ready(function() {
+		d3.dsv("\n", "WaterburyTeams.tsv").then(function(data){ //change "Waterbury" to "Hartford" for Hartford
+			var options = '';
+
+  			for(var i = 0; i < data.length; i++) options += '<option value="'+data[i].Teams+'" />';
+
+  			document.getElementById('teams').innerHTML = options;
+		});
+		
 		var $form = $('form#scouting-form'),
 			url = 'https://script.google.com/macros/s/AKfycbxslJcj5Y5mIwzyDGdnYL5MGcnHQhdUz1FpbsDYuGgh5ivugvM/exec' //you'll have to change this for hartford, onwards
 		
