@@ -6,11 +6,21 @@
 	<link href='LoginStyles.css' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Candara' rel='stylesheet'>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<link rel="manifest" href="./manifest.json"/>
+	<link rel="manifest" href="./app.webmanifest"/>
 	<link rel="icon" href="Icons/ub256.png" sizes="256x256"/>
 	<link rel="icon" href="Icons/ub144.png" sizes="144x144"/>
 	<link rel="icon" href="Icons/ub72.png" sizes="72x72"/>
 	<link rel="icon" href="Icons/ub48.png" sizes="48x48"/>
+	<!-- register service worker -->
+    <script>
+    if ('serviceWorker' in navigator) 
+        {
+          window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+          .then(() => { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
+        } ); 
+      }  
+    </script>
 </head>
 <body>
 	<div class="wrapper">
@@ -102,18 +112,6 @@
 		});
 	});
 </script>
-<!-- register service worker -->
-        <script>
-          if ('serviceWorker' in navigator)
-          {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js')
-            .then(function() { console.log("Service Worker Registered, Cheers to PWA Fire!"); });
-          }
-          );
-        }
-        </script>
- <!-- end of service worker -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
 
