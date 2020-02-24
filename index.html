@@ -114,5 +114,28 @@
         }
         </script>
  <!-- end of service worker -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDE-DM1O2CnFI8mbVCkBVviIo4JiZsd340",
+    authDomain: "scouting-2020-1581b.firebaseapp.com",
+    databaseURL: "https://scouting-2020-1581b.firebaseio.com",
+    projectId: "scouting-2020-1581b",
+    storageBucket: "scouting-2020-1581b.appspot.com",
+    messagingSenderId: "385570783578",
+    appId: "1:385570783578:web:2483da171ded1041f8f363",
+    measurementId: "G-0CJY167BL2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>
