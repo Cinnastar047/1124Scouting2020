@@ -226,6 +226,7 @@
 		
 		$('#submit-form').on('click', function(e) {
 			e.preventDefault();
+			document.getElementById("submit-form").style.pointerEvents = "none";
 			var jqxhr = $.ajax({
 				url: url,
 				method: "GET",
@@ -233,6 +234,7 @@
 				data: $form.serialize(),
 				success: function() {
 					submission();
+					document.getElementById("submit-form").style.pointerEvents = "auto";
 					var match = document.getElementById("Match");
 					var matchnum = match.value;
 					var scouter = document.getElementById("Scouter");
