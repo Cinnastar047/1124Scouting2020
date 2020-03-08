@@ -33,10 +33,43 @@ function manualInput() {
 	}
 }
 		
+var scouterStation;
+function scoutingPositionSetup() {
+	var position = document.getElementById("scouterPosition").value;
+	if (position=="R1" || position=="R2" || position=="R3") { document.getElementById("scouterPosition").style.backgroundColor = "#B00"; }
+	else { document.getElementById("scouterPosition").style.backgroundColor = "#00B"; }
+}
 function scoutingPosition() {
 	var position = document.getElementById("scouterPosition").value;
 	if (position=="R1" || position=="R2" || position=="R3") { document.getElementById("scouterPosition").style.backgroundColor = "#B00"; }
 	else { document.getElementById("scouterPosition").style.backgroundColor = "#00B"; }
+	
+	switch (position) {
+		case "R1":
+			scouterStation = "Red 1";
+		break;
+		case "R2":
+			scouterStation = "Red 2";
+		break;
+		case "R3":
+			scouterStation = "Red 3";
+		break;
+		case "B1":
+			scouterStation = "Blue 1";
+		break;
+		case "B2":
+			scouterStation = "Blue 2";
+		break;
+		case "B3":
+			scouterStation = "Blue 3";
+		break;
+	}
+	logOut();
+	document.getElementById("Position").value = scouterStation;
+	document.getElementById("on-off").value = "On";
+	logOut();
+	document.getElementById("on-off").value = "Off";
+	getTeam();
 }
 
 function countUp(button_class) {
@@ -306,7 +339,7 @@ function getData() {
 		break;
 		default: alert("heck");	
 	}
-	scoutingPosition();
+	scoutingPositionSetup();
 	alert("You're scouting "+position+".");
 }
 

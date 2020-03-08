@@ -35,7 +35,7 @@
 		</select>
 		<input type="text" name="Team" class="preset" id="Team" placeholder="Team" list="teams"><datalist id="teams">
 		</datalist></input>
-		<input type="number" name="Match" id="Match" placeholder="Match" size="5" value="1" class="preset"/>
+		<input type="number" name="Match" id="Match" placeholder="Match" size="5" value="1" class="preset" onInput="getTeam()"/>
 		<p style="display: inline-block;">Manual&nbsp;</p>
 		<label class="switch"><input type="checkbox" id="manual"> <span class="slider round" onClick="manualInput()"></span></label> 
 		<br>
