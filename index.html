@@ -37,7 +37,7 @@
 	</div>
 <script>
 	window.onload = function () {
-		const dataURL = 'https://spreadsheets.google.com/feeds/cells/1WrYdjXfmYBAxbbJaTaVUPDx6lfOX62PoOhDvC2GvuA8/5/public/full?alt=json'; //you'll have to change this for hartford, onwards
+		const dataURL = 'https://spreadsheets.google.com/feeds/cells/1WrYdjXfmYBAxbbJaTaVUPDx6lfOX62PoOhDvC2GvuA8/4/public/full?alt=json'; //you'll have to change this for hartford, onwards
 		$.getJSON(dataURL, function(data) {
 			console.log(data.feed.entry);
 			console.log((data.feed.entry[2].content.$t)+" "+(data.feed.entry[3].content.$t));
