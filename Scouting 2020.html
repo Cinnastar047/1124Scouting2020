@@ -278,10 +278,6 @@
 		<input type="text" name="On/Off" id="on-off" value="Off" style="display: none;"/>
 	</form>
 	<script>
-	$(window).on("beforeunload", function(e) {
-   		logOut();
-	});
-		
 	document.addEventListener("visibilitychange", function() {
 		if(document.visibilityState == "hidden") logOut();
 		else if(document.visibilityState == "visible") window.open("index.html", "_self");
