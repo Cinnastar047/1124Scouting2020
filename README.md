@@ -5,7 +5,7 @@ An FRC scouting webapp designed for use by team 1124.
 <img src="https://github.com/Cinnastar047/1124Scouting2020/blob/master/Screenshots/Screenshot_20200306-213836.png" width="30%"/>
 <img src="https://github.com/Cinnastar047/1124Scouting2020/blob/master/Screenshots/Screenshot_20200306-213840.png" width="30%"/>
 <h2>Top Section</h2>
-Scouting Position: Scouters are randomly assigned an open scouting position (red/blue, 1/2/3)
+Scouting Position: Scouters are randomly assigned an open scouting position (red/blue, 1/2/3) <br>
 Team: Scouters are told which team to scout each match using data pulled from The Blue Alliance <br>
 Match: Match number is displayed and submitted with the scouting form for processing in the scouting database spreadsheet <br>
 Manual Toggle: The 3 prior fields can be enabled to be changed manually if an error is made or connection to The Blue Alliance is lost
